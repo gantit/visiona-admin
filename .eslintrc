@@ -1,0 +1,22 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "linebreak-style": 0,
+    "no-console": 0
+  }
+}

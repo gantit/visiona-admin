@@ -1,0 +1,53 @@
+$white:    #fff;
+$bg-gradient: linear-gradient(90deg, rgba(67, 67, 67, 0.5) 0, rgba(251, 255, 0, 0.33));
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.rowfull{
+  height: 100Vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 350px;
+  margin-bottom: 50px;
+  @media (max-width: 350px) { 
+    width: 200px;
+  }
+}
+
+.description {
+  background-image: url(http://demo.uifort.com/bamburgh-react-admin-dashboard-reactstrap-pro-demo/static/media/hero-9.388464d3.jpg);
+  position: relative;
+  .content{
+    z-index: 1;
+    color: $white;
+  }
+  .title{
+    margin-bottom: 10px;
+  }
+  .text{
+    color: $white;
+    z-index: 1;
+  }
+  &::after{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: $bg-gradient;
+    content: '';
+  }
+}
