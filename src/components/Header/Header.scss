@@ -1,0 +1,19 @@
+.user {
+  display: inline;
+  color: white;
+  font-size: 18px;
+}
+
+.dropDown {
+  > a {
+    color: white;
+    &:hover, &:visited,&:focus {
+      color: white;
+    }
+  }
+}
+
+.navBar {
+  max-width: 700px;
+  margin: 0 auto;
+}
