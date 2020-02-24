@@ -1,33 +1,38 @@
 import React from "react";
 import {
   Navbar,
-  Nav,
   NavDropdown,
+  Nav,
 } from 'react-bootstrap';
 import { AiOutlineUser } from "react-icons/ai";
 
 import "./Header.scss";
-import logoWhite from '../../assets/img/logo-blackBg.svg';
+import eng from '../../assets/flags/eng.svg';
+import cat from '../../assets/flags/cat.svg';
+import esp from '../../assets/flags/esp.svg';
 
-const Header = ({user}) => {
-  console.log(user)
+
+const Header = ({user, changeDistribution, distribution}) => {
   return(
-    <Navbar bg="dark" expand="sm" fixed="top" variant="dark">
-      <Navbar.Brand href="#home">
-        <img
-          src={logoWhite}
-          width="200"
-          className="d-inline-block align-top"
-          alt="React Bootstrap logo"
-        />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav" className="navBar justify-content-end">
-        <NavDropdown className="dropDown" title={<><AiOutlineUser color={'white'}/> <p className="user">{user.username}</p></>} id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-        </NavDropdown>
+    <Navbar bg="dark" expand="sm" variant="dark">
+      <Navbar.Toggle aria-controls="nav" />
+      <Navbar.Collapse id="nav" className="justify-content-end">
+        <Nav >
+          <Navbar.Collapse>
+            <NavDropdown className="dropDown" title={<><AiOutlineUser color={'white'}/> <p className="user">{user.username}</p></>} id="user-dropdown">
+              <NavDropdown.Item onClick={()=>changeDistribution(!distribution)}> {distribution ? 'Header OFF' : 'Header ON'}</NavDropdown.Item>
+              <NavDropdown.Item> 
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Navbar.Collapse>
+          <Navbar.Collapse className="navBar">
+            <NavDropdown className="dropDown" title={<p className="user" >Idioma</p>} id="Lang-dropdown">
+              <NavDropdown.Item> <img className="flag" src={eng} alt="united kindon Flag"/> English </NavDropdown.Item>
+              <NavDropdown.Item> <img className="flag" src={cat} alt="catalonia Flag"/> Catalan </NavDropdown.Item>
+              <NavDropdown.Item> <img className="flag" src={esp} alt="spain Flag"/> Español </NavDropdown.Item>
+            </NavDropdown>
+          </Navbar.Collapse>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   )

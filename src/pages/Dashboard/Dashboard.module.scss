@@ -1,0 +1,81 @@
+.dashboard {
+  background: white;
+  box-shadow: 0 0 9px 0px rgba(210, 210, 210, 0.5);
+  box-sizing: border-box;
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 0.3fr 1.7fr;
+  grid-template-rows: 0.1fr 1.9fr;
+  grid-template-areas: "menu header" "menu body";
+  &.headerBig {
+    grid-template-areas: "header header" "menu body";
+  }
+  &.menuClose{
+    transition: width .3s ease;
+    grid-template-columns: 50px 1.7fr;
+    overflow: hidden;
+    transition: all .3s ease;
+    .menu {
+      transition: all .3s ease;
+      width: 50px;
+      overflow: hidden;
+    }
+  }
+  height: 100vh;
+}
+
+.menu { 
+  grid-area: menu;
+  background-color: #4a5158;
+  transition: all .3s ease;
+  width: 180px;
+}
+
+.body { 
+  grid-area: body;
+  width: 100%;
+  background-color: #adaeaf;
+}
+
+.header { 
+  grid-area: header;
+ }
+
+.menuSide{
+  height: 60px;
+  line-height: 60px;
+  text-align: end;
+  padding: 0 20px;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover{
+    animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    svg{
+      fill: #a1a3a5;
+    }
+  }
+}
+
+ @keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(5px);
+  }
+  40% {
+    transform: translateX(0px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(0px);
+  }
+}

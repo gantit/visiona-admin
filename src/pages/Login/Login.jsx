@@ -69,7 +69,7 @@ const Login = ({setBearer, setUser}) => {
             <Image src={logoBlack} rounded />
           </div>
           <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               onChange={handleEmail}
               type="email"
@@ -78,7 +78,7 @@ const Login = ({setBearer, setUser}) => {
               value={values.email}
               isInvalid={values.isInvalid}
             />
-            <Form.Control.Feedback type="invalid"> Error en el correo electronico </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Error en el Email </Form.Control.Feedback>
 
           </Form.Group>
 
