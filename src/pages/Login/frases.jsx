@@ -349,4 +349,7 @@ const imgs = [
   "https://images.unsplash.com/photo-1493235431945-90c060301e41?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=60"
 ];
 
+const cita = frases[randrange(0, frases.length - 1)]
+const bg = imgs[randrange(0, imgs.length - 1)]
+
 export { frases, randrange, imgs }

@@ -1,81 +1,53 @@
-.dashboard {
-  background: white;
-  box-shadow: 0 0 9px 0px rgba(210, 210, 210, 0.5);
-  box-sizing: border-box;
+.dashboard{
+  // background-color: rebeccapurple;
+  padding: 3px;
   height: 100vh;
-  margin: 0 auto;
-  max-width: 1200px;
-  overflow: hidden;
+  width: 100vw;
 }
 
-.gridContainer {
-  display: grid;
-  grid-template-columns: 0.3fr 1.7fr;
-  grid-template-rows: 0.1fr 1.9fr;
-  grid-template-areas: "menu header" "menu body";
-  &.headerBig {
-    grid-template-areas: "header header" "menu body";
-  }
-  &.menuClose{
-    transition: width .3s ease;
-    grid-template-columns: 50px 1.7fr;
-    overflow: hidden;
-    transition: all .3s ease;
-    .menu {
-      transition: all .3s ease;
-      width: 50px;
-      overflow: hidden;
-    }
-  }
-  height: 100vh;
+.container{
+  // background-color: greenyellow;
+  display: flex;
+  padding: 2px;
+  height: 100%;
 }
 
-.menu { 
-  grid-area: menu;
-  background-color: #4a5158;
-  transition: all .3s ease;
-  width: 180px;
+.menu{
+  background-color: #464646;
+  width: 230px;
 }
 
-.body { 
-  grid-area: body;
+.body{
+  // background-color: rgb(53, 148, 127);
   width: 100%;
-  background-color: #adaeaf;
+  height: 100%;
 }
 
-.header { 
-  grid-area: header;
- }
+.header{
+  background-color: white;
+}
 
-.menuSide{
-  height: 60px;
-  line-height: 60px;
-  text-align: end;
-  padding: 0 20px;
-  font-size: 20px;
-  cursor: pointer;
-  &:hover{
-    animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    svg{
-      fill: #a1a3a5;
+
+@media (max-width: 575px) { 
+  .container{
+    display: block;
+  }
+  .menu{
+    width: 100%;
+    background-color: white;
+  }
+  .header{
+    background-color: white;
+    min-height: 55px;
+    position: absolute;
+    top: 5px;
+    transition: width 5s;
+    width: 50%;
+    .button {
+      border: none;
+      margin-left: 90%;
     }
   }
-}
+  
 
- @keyframes slide-left {
-  0% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(5px);
-  }
-  40% {
-    transform: translateX(0px);
-  }
-  60% {
-    transform: translateX(-5px);
-  }
-  80% {
-    transform: translateX(0px);
-  }
 }

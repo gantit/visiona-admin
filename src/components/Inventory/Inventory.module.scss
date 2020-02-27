@@ -1,0 +1,12 @@
+
+.inventory {
+  color: red;
+  display: flex;
+  padding: 10px;
+}
+
+@media (max-width: 575px) { 
+  .inventory {
+    color: blue;
+  }
+}

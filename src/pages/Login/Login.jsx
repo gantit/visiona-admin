@@ -1,71 +1,80 @@
 import React, { useState } from 'react';
-import {useHistory} from "react-router-dom";
-
+import { useHistory } from 'react-router-dom';
 import {
-  Button,
-  Col,
-  Form,
-  Image,
-  Row,
-  Spinner,
+  Button, Col, Form,
+  Image, Row, Spinner,
 } from 'react-bootstrap';
-import * as userService from "../../services/user";
+
+import * as userService from '../../services/user';
+import { frases, randrange, imgs } from './frases';
+
 import logoBlack from '../../assets/img/logo-whiteBg.svg';
 import logoWhite from '../../assets/img/logo-blackBg.svg';
-import { frases, randrange, imgs } from "./frases";
-import './Login.scss';
+
+import s from './Login.module.scss';
 
 
-const cita = frases[randrange(0, frases.length - 1)]
-const bg = imgs[randrange(0, imgs.length - 1)]
+const cita = frases[randrange(0, frases.length - 1)];
+const bg = imgs[randrange(0, imgs.length - 1)];
 
-const Login = ({setBearer, setUser}) => {
-  const history =useHistory();
+const Login = ({ setBearer, setUser }) => {
+  const history = useHistory();
   const [values, setValue] = useState({
-    email: 'correo@user.es', 
+    email: 'correo@user.es',
     password: '1234',
-    isInvalid: false
+    isInvalid: false,
   });
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
 
   const sendForm = async (data) => {
     setLoading(true);
     const user = await userService.login(data);
-    if(user){
-      const {token,username, role, email} = user;
-      setUser({ email, role, username })
-      setBearer(token)
-      history.push("/user")
+    if (user) {
+      const {
+        token, username, role, email,
+      } = user;
+      setUser({ email, role, username });
+      setBearer(token);
+      history.push('/user');
     }
     setValue({ ...values, password: '', isInvalid: true });
     setLoading(false);
   };
 
-  const handleSubmit = async () => await sendForm(values);
+  const handleSubmit = () => sendForm(values);
   const handleEmail = (e) => setValue({ ...values, email: e.target.value });
   const handlePassword = (e) => setValue({ ...values, password: e.target.value });
 
-  const loader = <>{loading && <Spinner className="loader" animation="border" size="sm" />}</>
+  const loader = <>{loading && <Spinner className="loader" animation="border" size="sm" />}</>;
 
   return (
-    <Row className="rowfull">
-         <Col xs={12} sm={3} md={6} xl={4}
-        className="description center"
-        style={{ backgroundImage: `url(${bg})` }}>
-        <div className="content">
-          <blockquote className="blockquote">
-          <div className="logo onlyMobile">
-            <Image src={logoWhite} rounded />
-          </div>
-            <p className="mb-0"> {cita.frase} </p>
-            <footer className="blockquote-footer"> {cita.autor} </footer>
+    <Row className={s.rowfull}>
+      <Col
+        xs={12}
+        sm={3}
+        md={6}
+        xl={4}
+        className={`${s.description} ${s.center}`}
+        style={{ backgroundImage: `url(${bg})` }}
+      >
+        <div className={s.content}>
+          <blockquote className={s.blockquote}>
+            <div className={`${s.logo} ${s.onlyMobile}`}>
+              <Image src={logoWhite} rounded />
+            </div>
+            <p className="mb-0">
+              {cita.frase}
+            </p>
+            <footer className={s.blockquoteFooter}>
+              {cita.autor}
+            </footer>
           </blockquote>
         </div>
       </Col>
-      <Col xs={12} sm={9} md={6} xl={8} className="loginSection center">
+      <Col xs={12} sm={9} md={6} xl={8} className={`${s.loginSection} ${s.center}`}>
         <Form>
-          <div className="logo onlyTablet">
+          <div className={`${s.logo} ${s.onlyTablet}`}>
             <Image src={logoBlack} rounded />
           </div>
           <Form.Group controlId="formBasicEmail">
@@ -79,7 +88,6 @@ const Login = ({setBearer, setUser}) => {
               isInvalid={values.isInvalid}
             />
             <Form.Control.Feedback type="invalid"> Error en el Email </Form.Control.Feedback>
-
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
@@ -95,7 +103,10 @@ const Login = ({setBearer, setUser}) => {
             <Form.Control.Feedback type="invalid"> Hay un error en la contraseña </Form.Control.Feedback>
           </Form.Group>
 
-          <Button className="sendbtn" variant="primary" disabled={loading || !values.password || !values.email } onClick={handleSubmit}> Enviar {loader} </Button>
+          <Button className={s.sendbtn} variant="primary" disabled={loading || !values.password || !values.email} onClick={handleSubmit}>
+            Enviar
+            {loader}
+          </Button>
         </Form>
       </Col>
     </Row>

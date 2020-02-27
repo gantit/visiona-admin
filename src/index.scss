@@ -16,3 +16,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.onlyMobile{
+  display: none;
+  @media (max-width: 575px) { 
+    display:block
+  }
+}
+
+.onlyTablet{
+  display: block;
+  @media (max-width: 575px) { 
+    display:none;
+  }
+}

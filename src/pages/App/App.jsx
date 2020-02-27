@@ -20,7 +20,7 @@ const App = () => {
     return (
       <Route {...rest} render = {
         ({ location }) => console.log('redirecionado dentro') ||
-          user ?  (children) :  <Redirect to={{ pathname: "/", state: { from: location } }} />
+          true ?  (children) :  <Redirect to={{ pathname: "/", state: { from: location } }} />
         }
       />
     );

@@ -1,39 +1,34 @@
-import React, { useState } from 'react';
-import { FaArrowRight, FaArrowLeft} from "react-icons/fa";
+import React from 'react';
+import PropTypes from 'prop-types';
 
+import Header from '../../components/Header';
+import Menu from '../../components/Menu';
+import Inventory from '../../components/Inventory';
 
-import styles from './Dashboard.module.scss';
+import s from './Dashboard.module.scss';
 
-
-import Header from "../../components/Header";
-import Menu from "../../components/Menu";
-
-const Dashboard = ({ user }) => {
-  const [distribution, changeDistribution] = useState(false);
-  const [isCloseMenu, setOpenMenu] = useState(false)
-  return (
-    <div className={styles.dashboard}>
-      <div className={`${styles.gridContainer} ${distribution && styles.headerBig} ${isCloseMenu && styles.menuClose}`}>
-        <div className={styles.header}>
-          <Header
-            user={user}
-            changeDistribution={changeDistribution}
-            distribution={distribution}
-          />
+const Dashboard = ({ user }) => (
+  <div className={s.dashboard}>
+    <div className={s.container}>
+      <div className={s.menu}>
+        <Menu />
+      </div>
+      <div className={s.body}>
+        <div className={s.header}>
+          <Header user={user} />
         </div>
-        <div className={styles.menu}>
-          <div className={styles.menuSide} onClick={()=> setOpenMenu(!isCloseMenu)}>
-            {isCloseMenu && <div className={styles.close}><FaArrowRight color={'white'}/></div>}
-            {!isCloseMenu && <div className={styles.open}><FaArrowLeft color={'white'}/></div>}
-          </div>
-          <Menu />
-        </div>
-        <div className={styles.body}>
-          Body
-        </div>
+        <Inventory />
       </div>
     </div>
-  )
+  </div>
+);
+
+Dashboard.propTypes = {
+  user: PropTypes.shape({}),
+};
+
+Dashboard.defaultProps = {
+  user: {},
 };
 
 export default Dashboard;
