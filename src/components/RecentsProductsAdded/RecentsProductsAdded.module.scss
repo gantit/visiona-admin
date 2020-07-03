@@ -1,17 +1,16 @@
 
-
-.menuButton {
-  display: flex;
-}
-
-.inventory {
+.recentsProductsAdded {
   color: red;
   display: flex;
   padding: 10px;
+
+  width: 90%;
+  margin: 0 5%;
 }
 
 @media (max-width: 575px) { 
-  .inventory {
+  .recentsProductsAdded {
     color: blue;
   }
 }
+ 

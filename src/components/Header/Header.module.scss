@@ -27,14 +27,19 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 3px solid rgba(144, 144, 144, 0.5);
+  border: 3px solid rgba(#666, 0.5);
+}
+
+.back{
+  padding: 0 1rem;
+  font-size: 40px;
+  svg {
+    fill: #666
+  }
 }
 
 @media (max-width: 575px) { 
   .button {
     border: none;
-
   }
-  
-
 }

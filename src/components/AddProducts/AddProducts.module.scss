@@ -1,17 +1,13 @@
 
-
-.menuButton {
-  display: flex;
-}
-
-.inventory {
+.addProducts {
   color: red;
   display: flex;
   padding: 10px;
 }
 
 @media (max-width: 575px) { 
-  .inventory {
+  .addProducts {
     color: blue;
   }
 }
+ 

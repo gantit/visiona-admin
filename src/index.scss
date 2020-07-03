@@ -1,15 +1,24 @@
 // Override default variables before the import
 $body-bg: #eaeaea;
 // Import Bootstrap and its default variables
-@import '~bootstrap/scss/bootstrap.scss';
+@import url('~bootstrap/scss/bootstrap.scss');
+@import url('/assets/fonts/visionaAdminIconFont/style.css');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap');
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Comfortaa', 'roboto';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: rgb(240, 240, 240);
+}
+
+#root {
+  background-color: white;
+  height: 100vh;
+  box-shadow: 0 0 8px 4px rgba(76, 76, 76, 0.2);
 }
 
 code {

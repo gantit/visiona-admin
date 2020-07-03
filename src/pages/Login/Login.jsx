@@ -1,52 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   Button, Col, Form,
   Image, Row, Spinner,
 } from 'react-bootstrap';
 
-import * as userService from '../../services/user';
-import { frases, randrange, imgs } from './frases';
+import useUser from '../../components/Hooks/useUser';
+import { cita, bg } from './frases';
 
 import logoBlack from '../../assets/img/logo-whiteBg.svg';
 import logoWhite from '../../assets/img/logo-blackBg.svg';
 
 import s from './Login.module.scss';
 
-
-const cita = frases[randrange(0, frases.length - 1)];
-const bg = imgs[randrange(0, imgs.length - 1)];
-
-const Login = ({ setBearer, setUser }) => {
+const Login = ({ setUser }) => {
   const history = useHistory();
+  const {
+    login, isLoginLoading, isLogged, user,
+  } = useUser();
   const [values, setValue] = useState({
     email: 'correo@user.es',
-    password: '1234',
+    password: '',
     isInvalid: false,
   });
-  const [loading, setLoading] = useState(false);
 
-
-  const sendForm = async (data) => {
-    setLoading(true);
-    const user = await userService.login(data);
-    if (user) {
-      const {
-        token, username, role, email,
-      } = user;
-      setUser({ email, role, username });
-      setBearer(token);
-      history.push('/user');
+  useEffect(() => {
+    if (isLogged) {
+      history.push('/dashboard');
     }
-    setValue({ ...values, password: '', isInvalid: true });
-    setLoading(false);
-  };
+  }, [isLogged, history]);
 
-  const handleSubmit = () => sendForm(values);
+  useEffect(() => {
+    if (user) {
+      setUser(user);
+    }
+  }, [user, setUser]);
+
+
+  const handleSubmit = () => { login(values); };
   const handleEmail = (e) => setValue({ ...values, email: e.target.value });
   const handlePassword = (e) => setValue({ ...values, password: e.target.value });
 
-  const loader = <>{loading && <Spinner className="loader" animation="border" size="sm" />}</>;
+  const loader = <>{isLoginLoading && <Spinner className="loader" animation="border" size="sm" />}</>;
 
   return (
     <Row className={s.rowfull}>
@@ -72,7 +67,7 @@ const Login = ({ setBearer, setUser }) => {
           </blockquote>
         </div>
       </Col>
-      <Col xs={12} sm={9} md={6} xl={8} className={`${s.loginSection} ${s.center}`}>
+      <Col xs={12} sm={9} md={6} xl={8} className={`${s.center}`}>
         <Form>
           <div className={`${s.logo} ${s.onlyTablet}`}>
             <Image src={logoBlack} rounded />
@@ -103,7 +98,7 @@ const Login = ({ setBearer, setUser }) => {
             <Form.Control.Feedback type="invalid"> Hay un error en la contraseña </Form.Control.Feedback>
           </Form.Group>
 
-          <Button className={s.sendbtn} variant="primary" disabled={loading || !values.password || !values.email} onClick={handleSubmit}>
+          <Button className={s.sendbtn} variant="primary" disabled={isLoginLoading || !values.password || !values.email} onClick={handleSubmit}>
             Enviar
             {loader}
           </Button>

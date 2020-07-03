@@ -1,8 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 import { AiOutlineUser } from 'react-icons/ai';
 import { FaHome } from 'react-icons/fa';
+import { IoMdArrowRoundBack } from 'react-icons/io';
+import { useLocation, useHistory } from 'react-router-dom';
 
 import useClickOutside from '../Hooks/useClickOutside';
 
@@ -14,16 +15,33 @@ import s from './Header.module.scss';
 
 const Header = ({ user }) => {
   const ref = useRef();
+  const baseRoute = '/';
   const [isOpen, setOpen] = useState(false);
+  const [actualRoute, setRoute] = useState(baseRoute);
   useClickOutside(ref, () => setOpen(false));
+  const { goBack } = useHistory();
+
+  const usePageViews = () => {
+    const location = useLocation();
+    useEffect(() => {
+      setRoute(location.pathname);
+    }, [location]);
+  };
 
   return (
     <Navbar expand="sm" className={s.header} ref={ref} expanded={isOpen}>
+      {usePageViews()}
+      {(actualRoute !== baseRoute && actualRoute !== '/dashboard') && (
+        <Nav.Link className={s.back} onClick={goBack}>
+          <IoMdArrowRoundBack color="black" />
+        </Nav.Link>
+      )}
       <Navbar.Toggle aria-controls="nav" className={s.button} onClick={() => setOpen(!isOpen)}>
         <FaHome color="black" />
       </Navbar.Toggle>
       <Navbar.Collapse id="nav" className="justify-content-end">
         <Nav>
+
           <Navbar.Collapse>
             <NavDropdown
               className={s.dropDown}
@@ -60,17 +78,6 @@ const Header = ({ user }) => {
       </Navbar.Collapse>
     </Navbar>
   );
-};
-
-
-Header.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string,
-  }),
-};
-
-Header.defaultProps = {
-  user: {},
 };
 
 export default Header;

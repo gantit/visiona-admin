@@ -1,41 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import {
-  Form, Col, InputGroup, Button, Table,
+  Form, Col, InputGroup, Button,
 } from 'react-bootstrap';
 
 import useAsync from '../Hooks/useAsync';
-
-import s from './Inventory.module.scss';
+import s from './AddProducts.module.scss';
 
 const API_URL = window.location.hostname !== 'localhost' ? 'https://api.visiona.cat' : 'http://localhost:4000';
 
-const Inventory = () => {
-  const getProducts = async () => {
-    const url = `${API_URL}/api/products/`;
-    const response = await axios.get(url);
-    return response;
-  };
-
-  const {
-    execute, pending, value, error,
-  } = useAsync(getProducts, false);
-
-
-  return (
-    <>
-      <div className={s.menuButton} />
-      <div className={s.inventory}>
-        <FormExample execute={execute} />
-        {value && <ItemTable items={value} />}
-        {error && <div>{error}</div>}
-        {pending && <div>pending</div>}
-      </div>
-    </>
-  );
-};
 
 const schema = Yup.object({
   firstName: Yup.string().required('First name is required'),
@@ -62,10 +37,10 @@ const FormExample = ({ execute }) => (
     {({
       handleSubmit,
       handleChange,
-      handleBlur,
+      // handleBlur,
       values,
       touched,
-      isValid,
+      // isValid,
       errors,
     }) => (
 
@@ -178,37 +153,24 @@ const FormExample = ({ execute }) => (
   </Formik>
 );
 
-const ItemTable = ({ items }) => (
-  <Table striped bordered hover size="sm">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Nombre</th>
-        <th>Precio</th>
-      </tr>
-    </thead>
-    <tbody>
-      {ITEMS_MOCK.map((item, index) => (
-        <tr>
-          <td>{index}</td>
-          <td>{item.name}</td>
-          <td>{item.providerPrice}</td>
-        </tr>
-      ))}
-    </tbody>
-  </Table>
-);
+const AddProducts = () => {
+  const getProducts = async () => {
+    const url = `${API_URL}/api/products/`;
+    const response = await axios.get(url);
+    return response;
+  };
 
-// eslint-disable-next-line no-unused-vars
-const ITEMS_MOCK = [
-  { name: 'Foodetector Perimetral', providerPrice: 69 },
-  { name: 'Perimetral Optex', providerPrice: 79 },
-  { name: 'Detector Shock Sensor', providerPrice: 19 },
-  { name: 'Magnético', providerPrice: 19 },
-  { name: 'Fotodetector', providerPrice: 39 },
-  { name: 'Fotodetector IPDE', providerPrice: 39 },
-  { name: 'Volumétrico', providerPrice: 35 },
-  { name: 'Sirena', providerPrice: 19 },
-];
+  // const { pending, value, error } = useAsync(getProducts, false);
+  const { pending, error } = useAsync(getProducts, false);
 
-export default Inventory;
+  return (
+    <div className={s.recentsProductsAdded}>
+      <FormExample />
+      {error && <div>{error}</div>}
+      {pending && <div>pending</div>}
+    </div>
+  );
+};
+
+
+export default AddProducts;

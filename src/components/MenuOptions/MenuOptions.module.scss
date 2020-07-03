@@ -1,13 +1,9 @@
 
-
-.menuButton {
-  display: flex;
-}
-
-.inventory {
-  color: red;
+.menuButtons {
   display: flex;
   padding: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 @media (max-width: 575px) { 

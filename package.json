@@ -12,6 +12,7 @@
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
+    "react-ga": "^3.0.0",
     "react-icons": "^3.9.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
@@ -22,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .js --ext .jsx ./src/"
   },
   "eslintConfig": {
     "extends": [
@@ -45,9 +47,7 @@
       "ecmaVersion": 2018
     }
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "pre-commit": [ "lint" ],
   "browserslist": {
     "production": [
       ">0.2%",
