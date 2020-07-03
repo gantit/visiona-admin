@@ -1,0 +1,16 @@
+
+.recentsProductsAdded {
+  color: red;
+  display: flex;
+  padding: 10px;
+
+  width: 90%;
+  margin: 0 5%;
+}
+
+@media (max-width: 575px) { 
+  .recentsProductsAdded {
+    color: blue;
+  }
+}
+ 

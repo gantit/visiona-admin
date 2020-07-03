@@ -12,6 +12,10 @@
 # production
 /build
 
+# iconMoon App
+src/assets/fonts/visionaAdminIconFont/demo*
+src/assets/fonts/visionaAdminIconFont/Read Me.txt
+
 # misc
 .DS_Store
 .env.local
