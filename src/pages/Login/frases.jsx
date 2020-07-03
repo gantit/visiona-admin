@@ -139,14 +139,16 @@ const frases = [
     "autor": "Henry Ford"
   },
   {
-    "frase": "”Después de cierto punto, el dinero no tiene sentido. Deja de ser el objetivo. El juego es lo que cuenta”. Aristóteles"
+    "frase": "”Después de cierto punto, el dinero no tiene sentido. Deja de ser el objetivo. El juego es lo que cuenta.”",
+    "autor": "Aristóteles"
   },
   {
     "frase": "”No pago buenos salarios porque no tengo mucho dinero, tengo un montón de dinero porque tengo que pagar buenos salarios.”",
     "autor": "Robert Bosch"
   },
   {
-    "frase": "”Préstale a tu amigo 20$ . Si no te paga no es tu amigo. Dinero bien gastado”. Ted Nicolas"
+    "frase": "”Préstale a tu amigo 20$ . Si no te paga no es tu amigo. Dinero bien gastado.”",
+    "autor": "Ted Nicolas"
   },
   {
     "frase": "”El dinero y el éxito no cambian las personas. Ellos simplemente amplifican lo que ya está dentro de ellas”",
@@ -185,7 +187,8 @@ const frases = [
     "autor": "Nolan Bushnell"
   },
   {
-    "frase": "”Si te preguntan si se puede hacer un trabajo, hay que decir, ‘¡Claro que puedo!’ Luego hay que ponerse a trabajar y encontrar la manera de hacerlo”. Theodore Roosevelt"
+    "frase": "”Si te preguntan si se puede hacer un trabajo, hay que decir, ‘¡Claro que puedo!’ Luego hay que ponerse a trabajar y encontrar la manera de hacerlo.”",
+    "autor": "Theodore Roosevelt"
   },
   {
     "frase": "”Todo comenzó de la nada”",
@@ -200,7 +203,8 @@ const frases = [
     "autor": "Emil Motycka"
   },
   {
-    "frase": "”Haz que suceda ahora, no mañana. Mañana es la excusa de un perdedor”. Andrew Moda"
+    "frase": "”Haz que suceda ahora, no mañana. Mañana es la excusa de un perdedor.”",
+    "autor": "Andrew Moda"
   },
   {
     "frase": "”Todos los días me levanto y miro la lista de Forbes con las personas más ricas de Estados Unidos. Si no estoy allí, me voy a trabajar”",
@@ -231,11 +235,8 @@ const frases = [
     "autor": "Joe Penna"
   },
   {
-    "frase": "”Proverbios orientales para la acción de emprender"
-  },
-  {
     "frase": "”El mejor momento para plantar un árbol fue hace veinte años. El segundo mejor momento es ahora”",
-    "autor": " Proverbio Chino"
+    "autor": "Proverbio Chino"
   },
   {
     "frase": "”Si quieres un año de prosperidad, cultiva cereales. Si quieres diez años de prosperidad, planta árboles. Si quieres cien años de prosperidad, cuida a las personas”",
@@ -247,7 +248,7 @@ const frases = [
   },
   {
     "frase": "”Siembra un pensamiento y cosecharás una acción; siembra una acción y cosecharás un hábito; siembra un hábito y cosecharás un carácter. Siembra un carácter y cosecharás un destino”",
-    "autor": " Proverbio Chino"
+    "autor": "Proverbio Chino"
   },
   {
     "frase": "”Un mal trabajador culpa a sus herramientas”",
@@ -347,5 +348,8 @@ const imgs = [
   "https://images.unsplash.com/photo-1433704334812-6c45b0b8784d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=60",
   "https://images.unsplash.com/photo-1493235431945-90c060301e41?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=60"
 ];
+
+const cita = frases[randrange(0, frases.length - 1)]
+const bg = imgs[randrange(0, imgs.length - 1)]
 
 export { frases, randrange, imgs }

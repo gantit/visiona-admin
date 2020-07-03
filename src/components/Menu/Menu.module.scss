@@ -1,0 +1,27 @@
+@import '../../index.scss'; 
+
+.menu {
+  display: inline;
+  color: white;
+  font-size: 18px;
+}
+
+.logoMenu{
+  width: 100%;
+}
+
+.link{
+  width: 100%;
+  padding: 30px 30px;
+}
+
+@media (max-width: 575px) { 
+  .button {
+    border: none;
+    margin-left: 90%;
+    min-height: 39px;
+  }
+  .link{
+    display: none;
+  }
+}
